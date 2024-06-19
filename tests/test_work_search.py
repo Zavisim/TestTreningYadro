@@ -4,8 +4,6 @@ import time
 import pytest
 from selenium.common import NoSuchElementException
 
-from pages import careers_page
-
 
 def test_work_search(browser, careers_page):
     a = 'DevOps'
@@ -21,7 +19,7 @@ def test_work_search(browser, careers_page):
         else:
             flag = False
             break
-    assert flag == True
+    assert id(flag) == id(True)
 
     time.sleep(2)
 
@@ -46,6 +44,7 @@ def test_3(browser, careers_page):
     careers_page.search.send_keys(a)
     careers_page.butt_search.click()
     time.sleep(2)
+    a = careers_page.butt_careers.text
     careers_page.butt_careers.click()
     time.sleep(2)
-    assert careers_page.butt_careers.text in careers_page.careers_banner.text
+    assert a in careers_page.careers_banner.text
